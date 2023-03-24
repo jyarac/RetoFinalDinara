@@ -1,0 +1,47 @@
+/api/v1/typesdocument/register:
+  post:
+    tags:
+      - TypesDocument
+    security:
+      - bearerAuth: []
+    summary: Registra tipo de documento
+    description: Permite registrar un nuevo tipo de documento
+    requestBody:
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              Name:
+                type: string
+            required:
+              - Name
+    responses:
+      '200':
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                msj:
+                  type: string
+              example:
+                state: true
+                msj: Tipo Documento registrado
+      '400':
+        description: Petición fallida
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                msj:
+                  type: string
+              example:
+                state: false
+                msj: Error al registrar el tipo de documento

@@ -1,0 +1,42 @@
+definitions:
+  Answer:
+    type: object
+    properties:
+      id_answer:
+        type: number
+      answer:
+        type: string
+      is_correct:
+        type: boolean
+      question_id:
+        type: number
+      state:
+        type: boolean
+components: 
+  schemas:
+    option:
+        type: object
+        properties:
+            Answer:
+                type: string
+                description: Opcion de respuesta
+            isCorrect:
+                type: boolean
+                description: Indica si la respuesta es correcta o no
+            question_id:
+                type: number
+                description: Llave foranea de la pregunta a la que pertenece
+            isActive:
+                type: boolean
+                description: Indica si la respuesta está activa o no
+        required:
+          - answer
+          - is_correct
+          - question_id
+          - state
+        example:
+          id_answer: 1
+          answer: "Option A"
+          is_correct: true
+          question_id: 1
+          state: true

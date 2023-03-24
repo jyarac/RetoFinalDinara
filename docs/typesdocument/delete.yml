@@ -1,0 +1,52 @@
+/api/v1/typesdocument/delete/{id}:
+  delete:
+    tags:
+      - TypesDocument
+    security:
+      - bearerAuth: []      
+    summary: Elimina un tipo de documento existente.
+    parameters:
+      - name: id
+        in: path
+        description: ID del tipo de documento a eliminar.
+        required: true
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: Eliminación exitosa.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: true
+                message:
+                  type: string
+                  example: 'Tipo Documento eliminado.'
+      '400':
+        description: Error al eliminar el tipo de documento.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: false
+                message:
+                  type: string
+                  example: 'Error eliminando tipo documento.'
+    examples:
+      '200':
+        summary: Ejemplo de eliminación exitosa.
+        value:
+          state: true
+          message: Tipo Documento eliminado.
+      '400':
+        summary: Ejemplo de error al eliminar el tipo de documento.
+        value:
+          state: false
+          message: Error eliminando tipo documento.

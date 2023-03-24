@@ -1,0 +1,78 @@
+/api/v1/questions/options/{id}:
+  get:
+    tags:
+    - Question
+    security:
+      - bearerAuth: []
+    summary: Obtener opciones de una pregunta
+    description: Obtiene las opciones asociadas a una pregunta según su ID.
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID de la pregunta.
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: Respuesta exitosa.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  description: Estado de la respuesta.
+                  example: true
+                message:
+                  type: string
+                  description: Mensaje de la respuesta.
+                  example: Listado de opciones
+                options:
+                  type: array
+                  description: Lista de opciones asociadas a la pregunta.
+                  items:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        description: ID de la opción.
+                        example: 1
+                      option:
+                        type: string
+                        description: Texto de la opción.
+                        example: Opción 1
+      '400':
+        description: Error en la solicitud.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  description: Estado de la respuesta.
+                  example: false
+                message:
+                  type: string
+                  description: Mensaje de error.
+                  example: Error al obtener las opciones
+    examples:
+      example-1:
+        summary: Ejemplo de respuesta exitosa.
+        description: Lista de opciones de la pregunta con ID 1.
+        value:
+          state: true
+          message: Listado de opciones
+          options:
+            - id: 1
+              option: Opción 1
+            - id: 2
+              option: Opción 2
+      example-2:
+        summary: Ejemplo de error en la solicitud.
+        description: La pregunta con el ID especificado no existe.
+        value:
+          state: false
+          message: Error al obtener las opciones

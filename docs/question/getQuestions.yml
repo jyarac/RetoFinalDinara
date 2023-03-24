@@ -1,0 +1,26 @@
+  /api/v1/questions/getquestions:
+    get:
+      tags:
+      - Question
+      security:
+        - bearerAuth: []
+      summary: Obtiene todas las preguntas con sus opciones
+      responses:
+        200:
+          description: Respuesta exitosa preguntas .
+          content:
+            application/json:
+              example:
+                state: true
+                questions:
+                  - id: 1
+                    question: "¿Cuál es tu color favorito?"
+                  - id: 2
+                    question: "¿Cuál es tu deporte favorito?"
+        400:
+          description: Error al listar las preguntas.
+          content:
+            application/json:
+              example:
+                state: false
+                message: "Error al listar las preguntas"

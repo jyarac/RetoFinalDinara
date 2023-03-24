@@ -1,0 +1,31 @@
+definitions:
+  Question:
+    type: object
+    properties:
+      id_question:
+        type: number
+      question:
+        type: string
+      isActive:
+        type: boolean
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+components:
+  schemas:
+    question:
+        type: object
+        properties:
+            question:
+                type: string
+                description: Pregunta
+            isActive:
+                type: boolean
+                description: Indica si la pregunta está activa o no
+        required:
+            - question
+            - isActive
+        example:
+            question: ¿Cuál es la capital de Francia?
+            isActive: true

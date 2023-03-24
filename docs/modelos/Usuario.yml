@@ -1,0 +1,103 @@
+definitions:
+  User:
+    type: object
+    properties:
+      id_user:
+        type: number
+      first_name:
+        type: string
+      second_name:
+        type: string
+      surname:
+        type: string
+      second_surname:
+        type: string
+      type_document:
+        type: number
+      document_number:
+        type: string
+      email:
+        type: string
+      password:
+        type: string
+      phone:
+        type: string
+      state:
+        type: boolean
+      id_rol:
+        type: number
+      created_at:
+        type: string
+      updated_at:
+        type: string
+      roleUsuario:
+        $ref: '#/definitions/Role'
+      typeDocumentUsuario:
+        $ref: '#/definitions/TypesDocument'
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id_user:
+          type: number
+          description: Identificador único del usuario
+        first_name:
+          type: string
+          description: Primer nombre del usuario
+        second_name:
+          type: string
+          description: Segundo nombre del usuario
+        surname:
+          type: string
+          description: Primer apellido del usuario
+        second_surname:
+          type: string
+          description: Segundo apellido del usuario
+        type_document:
+          type: number
+          description: Tipo de documento del usuario
+        document_number:
+          type: string
+          description: Número de documento del usuario
+        email:
+          type: string
+          description: Correo electrónico del usuario
+        password:
+          type: string
+          description: Contraseña del usuario
+        phone:
+          type: string
+          description: Número de teléfono del usuario
+        state:
+          type: boolean
+          description: Indica si el usuario está activo o no
+        id_rol:
+          type: number
+          description: rol del usuario en el sistema
+        created_at:
+          type: string
+        updated_at:
+          type: string
+      required:
+        - first_name
+        - second_name
+        - surname
+        - second_surname
+        - type_document
+        - document_number
+        - email
+        - password
+        - phone
+      example:
+        id_user: 1
+        first_name: Juan
+        second_name: Carlos
+        surname: Pérez
+        second_surname: González
+        type_document: 1
+        document_number: "12345678"
+        email: juan.perez@example.com
+        password: "hashedPassword123"
+        phone: "1234567890"
+        id_rol: 2

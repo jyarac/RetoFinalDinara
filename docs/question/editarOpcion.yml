@@ -1,0 +1,66 @@
+/api/v1/questions/updateAnswer/{id}:
+  put:
+    tags:
+    - Question
+    security:
+      - bearerAuth: []
+    summary: Edita una opción de respuesta existente.
+    parameters:
+      - name: id
+        in: path
+        description: ID de la opción a editar.
+        required: true
+        schema:
+          type: integer
+      - name: opcion
+        in: body
+        description: Texto de la opción a editar.
+        required: true
+        schema:
+          type: string
+      - name: iscorrect
+        in: body
+        description: Indica si la opción es la respuesta correcta (1) o no (0).
+        required: true
+        schema:
+          type: integer
+          minimum: 0
+          maximum: 1
+    responses:
+      '200':
+        description: Edición exitosa.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: true
+                message:
+                  type: string
+                  example: 'Opción editada con éxito.'
+      '400':
+        description: Error al editar la opción.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: false
+                message:
+                  type: string
+                  example: 'Error al editar la opción.'
+    examples:
+      '200':
+        summary: Ejemplo de edición exitosa.
+        value:
+          state: true
+          message: Opción editada con éxito.
+      '400':
+        summary: Ejemplo de error al editar la opción.
+        value:
+          state: false
+          message: Error al editar la opción.

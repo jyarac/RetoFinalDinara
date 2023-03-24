@@ -1,0 +1,36 @@
+/api/v1/user/getUser/{id}:
+  get:
+    tags:
+      - User
+    security:
+      - bearerAuth: []      
+    description: Consultar detalle de usuario por ID
+    operationId: buscarid
+    parameters:
+      - name: id
+        in: path
+        description: ID del usuario a buscar
+        required: true
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: Respuesta exitosa con el detalle del usuario
+        content:
+          application/json:
+            example:
+              firstName: "John"
+              secondName: "Doe"
+              surname: "Smith"
+              secondSurName: "Johnson"
+              typeDocument: "DNI"
+              documentNumber: "12345678"
+              email: "johndoe@example.com"
+              phone: "555-1234"
+      '400':
+        description: Error al consultar el detalle del usuario
+        content:
+          application/json:
+            example:
+              state: false
+              message: "Error al consultar el detalle del usuario"

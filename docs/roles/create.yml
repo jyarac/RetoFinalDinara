@@ -1,0 +1,47 @@
+/api/v1/roles/create:
+    post:
+      tags:
+        - Role
+      security:
+        - bearerAuth: []
+      summary: Registra roles
+      description: Permite registrar nuevos roles en el sistema
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                Name:
+                  type: string
+              required:
+                - Name
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: boolean
+                  msj:
+                    type: string
+                example:
+                  state: true
+                  msj: Rol registrado
+        '400':
+          description: Petición fallida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: boolean
+                  msj:
+                    type: string
+                example:
+                  state: false
+                  msj: Error al crear el rol

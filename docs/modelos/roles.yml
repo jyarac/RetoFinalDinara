@@ -1,0 +1,28 @@
+definitions:
+  Role:
+    type: object
+    properties:
+      id_rol:
+        type: number
+      name:
+        type: string
+      isActive:
+        type: boolean
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+
+components:
+  schemas:
+    role:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del rol
+      required:
+        - name
+      example:
+        name: Admin
+        isActive: true

@@ -1,0 +1,40 @@
+paths:
+  /api/v1/questions/updateQuestion/{id}:
+    put:
+      summary: Editar pregunta
+      tags:
+        - Question
+      security:
+        - bearerAuth: []
+      parameters:
+        - in: path
+          name: id
+          required: true
+          description: ID de la pregunta a editar
+          schema:
+            type: integer
+        - in: body
+          name: body
+          required: true
+          description: Datos de la pregunta a editar
+          schema:
+            type: object
+            properties:
+              question:
+                type: string
+                description: Nueva pregunta
+      responses:
+        '200':
+          description: Pregunta editada con éxito
+          content:
+            application/json:
+              example:
+                state: true
+                message: Pregunta editada con éxito
+        '400':
+          description: Error al editar la pregunta
+          content:
+            application/json:
+              example:
+                state: false
+                message: Error al editar la pregunta

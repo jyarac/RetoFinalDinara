@@ -1,0 +1,30 @@
+/api/v1/questions/delete/{id}:
+  delete:
+    tags:
+    - Question
+    security:
+      - bearerAuth: []
+    summary: Elimina una pregunta y sus opciones.
+    description: Elimina una pregunta y sus opciones asociadas cambiando el estado a inactivo.
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: ID de la pregunta a eliminar.
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: Pregunta eliminada con éxito.
+        content:
+          application/json:
+            example:
+              state: true
+              message: Pregunta Eliminada con éxito
+      '400':
+        description: Error al eliminar la pregunta.
+        content:
+          application/json:
+            example:
+              state: false
+              message: Error al eliminar la pregunta

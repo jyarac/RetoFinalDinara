@@ -1,0 +1,47 @@
+/api/v1/typesdocument/getTypeDocument:
+  get:
+    tags:
+      - TypesDocument
+    security:
+      - bearerAuth: []
+    summary: obtener tipos de documento
+    description: Obtiene todos los tipos de documento registrados en el sistema
+    responses:
+      200:
+        description: Petición exitosa
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                data:
+                  type: array
+                  items:
+                    $ref: '#/components/schemas/TypesDocument'
+              example:
+                state: true
+                data:
+                  - id: 1
+                    name: "Cédula de Ciudadanía"
+                  - id: 2
+                    name: "Tarjeta de Identidad"
+                  - id: 3
+                    name: "Cédula de Extranjería"
+      400:
+        description: Peticion fallida
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                data:
+                  type: string
+                  items:
+                    $ref: '#/components/schemas/TypesDocument'
+              example:
+                state: false
+                message: "error obteniendo tipos de documento"

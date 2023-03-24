@@ -1,0 +1,52 @@
+/api/v1/roles/delete/{id}:
+  delete:
+    tags:
+      - Role
+    security:
+      - bearerAuth: []
+    summary: Elimina un rol por ID.
+    parameters:
+      - name: id
+        in: path
+        description: ID del rol a eliminar.
+        required: true
+        schema:
+          type: integer
+    responses:
+      '200':
+        description: Rol eliminado con éxito.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: true
+                message:
+                  type: string
+                  example: 'Rol eliminado.'
+      '400':
+        description: Error al eliminar el rol.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: false
+                message:
+                  type: string
+                  example: 'Error al eliminar el rol.'
+    examples:
+      '200':
+        summary: Ejemplo de eliminación exitosa.
+        value:
+          state: true
+          message: Rol eliminado.
+      '400':
+        summary: Ejemplo de error al eliminar el rol.
+        value:
+          state: false
+          message: Error al eliminar el rol.

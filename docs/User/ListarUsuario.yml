@@ -1,0 +1,67 @@
+/api/v1/user/getUsers/:
+  get:
+    tags:
+      - User
+    security:
+      - bearerAuth: []      
+    summary: Listar Usuarios
+    description: Permite obtener un listado de los usuarios registrados
+    produces:
+      - application/json
+    parameters:
+      - name: page
+        in: query
+        description: Número de página a obtener (1 por defecto)
+        required: false
+        type: integer
+        format: int32
+      - name: perPage
+        in: query
+        description: Cantidad de registros por página (10 por defecto)
+        required: false
+        type: integer
+        format: int32
+      - name: filter
+        in: query
+        description: Filtro a aplicar sobre el listado de usuarios
+        required: false
+        schema:
+          type: object
+          properties:
+            name:
+              type: string
+              description: Nombre del usuario a buscar
+    responses:
+      200:
+        description: OK
+        schema:
+          type: object
+          properties:
+            state:
+              type: boolean
+              description: Indica si la petición fue exitosa o no
+            message:
+              type: string
+              description: Mensaje descriptivo de la respuesta
+            users:
+              type: array
+              items:
+                $ref: '#/definitions/User'
+            meta:
+              type: object
+              description: Información adicional sobre la paginación del resultado
+              properties:
+                total:
+                  type: integer
+                  description: Cantidad total de registros que cumplen con el filtro
+      400:
+        description: Error en la petición
+        schema:
+          type: object
+          properties:
+            state:
+              type: boolean
+              description: Indica si la petición fue exitosa o no
+            message:
+              type: string
+              description: Mensaje descriptivo del error

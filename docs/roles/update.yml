@@ -1,0 +1,58 @@
+/api/v1/roles/{id}:
+  put:
+    tags:
+      - Role
+    security:
+      - bearerAuth: []
+    summary: Actualiza un rol existente.
+    parameters:
+      - name: id
+        in: path
+        description: ID del rol a actualizar.
+        required: true
+        schema:
+          type: integer
+      - name: Name
+        in: body
+        description: Nombre del rol.
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Rol actualizado exitosamente.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: true
+                message:
+                  type: string
+                  example: 'Rol actualizado'
+      '400':
+        description: Error al actualizar el rol.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: false
+                message:
+                  type: string
+                  example: 'Error al actualizar el rol'
+    examples:
+      '200':
+        summary: Ejemplo de actualización exitosa.
+        value:
+          state: true
+          message: Rol actualizado
+      '400':
+        summary: Ejemplo de error al actualizar el rol.
+        value:
+          state: false
+          message: Error al actualizar el rol.

@@ -1,0 +1,58 @@
+/api/v1/typesDocument/update/{id}:
+  put:
+    tags:
+      - TypesDocument
+    security:
+      - bearerAuth: []      
+    summary: Actualiza un tipo de documento existente.
+    parameters:
+      - name: id
+        in: path
+        description: ID del tipo de documento a actualizar.
+        required: true
+        schema:
+          type: integer
+      - name: Name
+        in: body
+        description: Nombre del tipo de documento.
+        required: true
+        schema:
+          type: string
+    responses:
+      '200':
+        description: Actualización exitosa.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: true
+                message:
+                  type: string
+                  example: 'Tipo de documento actualizado.'
+      '400':
+        description: Error al actualizar el tipo de documento.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: false
+                message:
+                  type: string
+                  example: 'Error al actualizar el tipo de documento.'
+    examples:
+      '200':
+        summary: Ejemplo de actualización exitosa.
+        value:
+          state: true
+          message: Tipo de documento actualizado.
+      '400':
+        summary: Ejemplo de error al actualizar el tipo de documento.
+        value:
+          state: false
+          message: Error al actualizar el tipo de documento.

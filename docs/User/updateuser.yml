@@ -1,0 +1,74 @@
+/api/v1/user/updateUser/{id}:
+  put:
+    description: Actualiza un usuario existente.
+    tags:
+      - User
+    security:
+      - bearerAuth: []      
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              firstName:
+                type: string
+              secondName:
+                type: string
+              surname:
+                type: string
+              secondSurname:
+                type: string
+              typeDocument:
+                type: string
+              documentNumber:
+                type: string
+              email:
+                type: string
+              phone:
+                type: string
+            example:
+              firstName: Juan
+              secondName: Carlos
+              surname: Pérez
+              secondSurname: Gómez
+              typeDocument: DNI
+              documentNumber: 12345678
+              email: juan.perez@gmail.com
+              phone: 555-1234
+    parameters:
+      - name: id
+        in: path
+        description: ID del usuario a actualizar
+        required: true
+        schema:
+          type: integer
+        example: 1
+    responses:
+      '200':
+        description: Usuario actualizado exitosamente
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: true
+                message:
+                  type: string
+                  example: Se actualizó correctamente
+      '400':
+        description: Error al actualizar el usuario
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                state:
+                  type: boolean
+                  example: false
+                message:
+                  type: string
+                  example: Error al actualizar

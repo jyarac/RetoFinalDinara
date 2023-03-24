@@ -1,0 +1,38 @@
+definitions:
+  Form:
+    type: object
+    properties:
+      id:
+        type: number
+      id_student:
+        type: number
+      id_answer:
+        type: number
+      state:
+        type: boolean
+      created_at:
+        type: string
+      updated_at:
+        type: string
+
+components:
+  schemas:
+    form:
+      type: object
+      properties:
+        idStudent:
+          type: number
+          description: ID del estudiante
+        idAnswer:
+          type: number
+          description: ID de la respuesta
+        state:
+          type: boolean
+          description: indica si el formulario esta activo o no
+      required:
+        - idStudent
+        - idAnswer
+      example:
+        idStudent: 1
+        idAnswer: 2
+        state: true

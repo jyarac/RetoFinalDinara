@@ -1,0 +1,68 @@
+  /api/v1/form/getquestions:
+    get:
+      tags:
+        - Form
+      security:
+        - bearerAuth: []
+      summary: Obtener preguntas con opciones
+      description: Permite obtener una lista de todas las preguntas con sus opciones.
+      responses:
+        '200':
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: boolean
+                  questions:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                          description: ID de la pregunta.
+                        question:
+                          type: string
+                          description: Texto de la pregunta.
+                        options:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              id:
+                                type: integer
+                                description: ID de la opción.
+                              option:
+                                type: string
+                                description: Texto de la opción.
+              example:
+                state: true
+                questions:
+                  - id: 1
+                    question: "¿Qué lenguajes de programación conoces?"
+                    options:
+                      - id: 1
+                        option: "Java"
+                      - id: 2
+                        option: "Python"
+                      - id: 3
+                        option: "JavaScript"
+                      - id: 4
+                        option: "C#"
+        '400':
+          description: Error al listar las preguntas.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: boolean
+                  message:
+                    type: string
+              example:
+                state: false
+                message: "Error al listar las preguntas"

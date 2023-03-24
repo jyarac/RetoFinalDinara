@@ -1,0 +1,72 @@
+   /api/v1/user/create:
+    post:
+      tags:
+        - User
+      security:
+      - bearerAuth: []
+      summary: registra usuarios
+      description: Permite registrar usuarios
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+              type: object
+              properties:
+                firstName:
+                  type: string
+                secondName:
+                  type: string
+                surname:
+                  type: string
+                secondSurName:
+                  type: string
+                typeDocument:
+                  type: string
+                documentNumber:
+                  type: string
+                email:
+                  type: string
+                phone:
+                  type: string
+                password:
+                  type: string
+                rol:
+                  type: integer
+              required:
+                - firstName
+                - surname
+                - typeDocument
+                - documentNumber
+                - email
+                - phone
+                - password
+      responses:
+        '200':
+          description: Petición exitosa
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: boolean
+                  message:
+                    type: string
+                example:
+                  state: true
+                  message: Estudiante creado correctamente
+        '400':
+          description: Petición fallida
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  state:
+                    type: boolean
+                  message:
+                    type: string
+                example:
+                  state: false
+                  message: Fallo en la creación del estudiante

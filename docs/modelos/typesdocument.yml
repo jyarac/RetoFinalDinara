@@ -1,0 +1,27 @@
+definitions:
+  TypesDocument:
+    type: object
+    properties:
+      id_type_doc:
+        type: number
+      name:
+        type: string
+      isActive:
+        type: boolean
+      createdAt:
+        type: string
+      updatedAt:
+        type: string
+components:
+  schemas:
+    TypesDocument:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Nombre del tipo de documento
+      required:
+        - name
+      example:
+        name: Cédula de ciudadanía
+        isActive: true
